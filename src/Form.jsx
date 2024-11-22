@@ -272,6 +272,7 @@ function Form() {
         cargasFamiliares: [],
         beneficiariosFasdem: [],
         hijos: [],
+        sede:"",
         fotoFuncionario: null,
       });
 
