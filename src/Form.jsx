@@ -999,9 +999,10 @@ function Form() {
       </form>
       <button
           onClick={handleDownload}
-          className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
+          className="w-full bg-gray-500 text-white py-2 px-4 rounded-md cursor-not-allowed"
+          disabled
         >
-          Guardar Excel
+          Exportar Excel con Resultados
         </button>
     </div>
   );
