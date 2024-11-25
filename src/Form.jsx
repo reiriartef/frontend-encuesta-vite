@@ -186,6 +186,34 @@ function Form() {
     }));
   };
 
+  const handleDownload = async () => {
+    try {
+      const response = await fetch("https://backend-encuesta-flask.onrender.com/api/export_employees", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al descargar el archivo");
+      }
+
+      // Obtener el blob del archivo
+      const blob = await response.blob();
+
+      // Crear una URL para el blob y simular la descarga
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "puesto_a_puesto.xlsx"; // Nombre del archivo a descargar
+      a.click();
+      window.URL.revokeObjectURL(url); // Limpiar la URL
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -960,14 +988,21 @@ function Form() {
             ))}
           </>
         )}
-
+        
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
+          className="w-full bg-blue-500 text-white py-2 px-4 my-4 rounded-md hover:bg-blue-600 transition"
         >
           Enviar
         </button>
+        
       </form>
+      <button
+          onClick={handleDownload}
+          className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
+        >
+          Guardar Excel
+        </button>
     </div>
   );
 }
