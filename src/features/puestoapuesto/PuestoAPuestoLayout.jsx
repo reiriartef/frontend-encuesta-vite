@@ -1,6 +1,9 @@
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 
 function PuestoAPuestoLayout() {
+  const location = useLocation();
+
+  const isPuestoAPuestoRoute = location.pathname === '/puestoapuesto/';
   return (
     <div className="min-h-full w-full" style={{ width: '100%' }}>
       <nav className="bg-blue-800">
@@ -52,11 +55,20 @@ function PuestoAPuestoLayout() {
       </nav>
 
       <main>
-        <div className="min-w-full mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <Outlet />
+        <div className="min-w-full h-screen mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          {isPuestoAPuestoRoute ? (
+            <div className="flex items-center justify-center h-full">
+              <img
+                src="/darzulia.png"
+                alt="Imagen Placeholder"
+                className="h-64"
+              />
+            </div>
+          ) : (
+            <Outlet />
+          )}
         </div>
         <footer className="bg-gray-800 text-white text-center py-4 sticky bottom-0">
-          {' '}
           © {new Date().getFullYear()} Oficina de Apoyo Técnico Informático.
           Palacio de Justicia de Maracaibo. Todos los derechos reservados.
         </footer>
