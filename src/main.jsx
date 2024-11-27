@@ -14,7 +14,7 @@ const requiredPassword = 'OatiDev';
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Navigate to="/puestoapuesto" replace />} />
+      <Route path="/" element={<Navigate to="/puestoapuesto/" replace />} />
       <Route path="auth" element={<>Hola</>}>
         <Route index path="login" element={<>Login</>} />
         <Route path="register" element={<>Registro</>} />

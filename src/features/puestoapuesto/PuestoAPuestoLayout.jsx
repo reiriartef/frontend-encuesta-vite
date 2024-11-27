@@ -3,7 +3,9 @@ import { Outlet, useLocation } from 'react-router';
 function PuestoAPuestoLayout() {
   const location = useLocation();
 
-  const isPuestoAPuestoRoute = location.pathname === '/puestoapuesto/';
+  const isPuestoAPuestoRoute =
+    location.pathname === '/puestoapuesto/' ||
+    location.pathname === '/puestoapuesto';
   return (
     <div className="min-h-full w-full" style={{ width: '100%' }}>
       <nav className="bg-blue-800">
