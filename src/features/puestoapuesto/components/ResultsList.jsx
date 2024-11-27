@@ -114,31 +114,6 @@ function ResultsList() {
           'Exportar Excel con Resultados'
         )}{' '}
       </button>
-      <div className="flex flex-row min-w-full mx-auto my-2 space-x-2">
-        <select
-          name="id_transaccion"
-          value={sedeId}
-          onChange={handleChange}
-          required
-          className="mb-4 p-2 border rounded w-1/4"
-        >
-          <option value="">Todas las Sedes</option>
-          {sedes.map((sede, index) => (
-            <option key={index} value={sede.id}>
-              {sede.nombre}
-            </option>
-          ))}
-        </select>
-        <input
-          type="text"
-          name="monto"
-          placeholder="Filtrar por nombre"
-          value={nombre}
-          onChange={handleNameChange}
-          required
-          className="mb-4 p-2 border rounded w-full"
-        />
-      </div>
       <div className="min-w-full mx-auto overflow-x-auto">
         <table className="min-w-full bg-white shadow rounded-lg">
           <thead className="min-w-full bg-gray-100">
@@ -151,7 +126,6 @@ function ResultsList() {
               <th className="py-2 px-4 text-left">Adscripción Nominal</th>
               <th className="py-2 px-4 text-left">Ubicación Física</th>
               <th className="py-2 px-4 text-left">Funciones</th>
-              <th className="py-2 px-4 text-left">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -179,14 +153,6 @@ function ResultsList() {
                   </td>
                   <td className="py-2 px-4 text-left">
                     {funcionario.funciones}
-                  </td>
-                  <td className="py-2 px-4 text-left">
-                    <button
-                      onClick={handleDownload}
-                      className="w-full bg-blue-500 text-white py-2 px-4 rounded-md"
-                    >
-                      Ver Funcionario
-                    </button>
                   </td>
                 </tr>
               ))
