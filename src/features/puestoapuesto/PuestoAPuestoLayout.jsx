@@ -57,7 +57,7 @@ function PuestoAPuestoLayout() {
       </nav>
 
       <main>
-        <div className="min-w-full h-screen mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="flex flex-col min-h-screen min-w-full mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           {isPuestoAPuestoRoute ? (
             <div className="flex items-center justify-center h-full">
               <img

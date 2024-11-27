@@ -168,6 +168,7 @@ function ResultsList() {
               <th className="py-2 px-4 text-left">Adscripción Nominal</th>
               <th className="py-2 px-4 text-left">Ubicación Física</th>
               <th className="py-2 px-4 text-left">Funciones</th>
+              <th className="py-2 px-4 text-left">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -195,6 +196,15 @@ function ResultsList() {
                   </td>
                   <td className="py-2 px-4 text-left">
                     {funcionario.funciones}
+                  </td>
+                  <td className="py-2 px-4 text-left">
+                    <button
+                      onClick={handleDownload}
+                      className="w-full bg-gray-500 text-white py-2 px-4 rounded-md"
+                      disabled
+                    >
+                      Ver Funcionario
+                    </button>
                   </td>
                 </tr>
               ))
