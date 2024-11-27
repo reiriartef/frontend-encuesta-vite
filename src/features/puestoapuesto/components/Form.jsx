@@ -1,66 +1,66 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function Form() {
   const [responsableData, setResponsableData] = useState({
-    responsableName: "",
-    responsablePhone: "",
+    responsableName: '',
+    responsablePhone: '',
   });
 
   const [formData, setFormData] = useState({
-    sede: "",
-    funcionarioID: "",
-    funcionarioName: "",
-    age: "",
-    gender: "",
-    funcionarioPhone: "",
-    instagram: "",
-    tiktok: "",
-    facebook: "",
-    estadoCivil: "",
-    tieneCarnet: "",
-    razonNoCarnet: "",
-    tipoPersonal: "",
-    shirtSize: "",
-    suitSize: "",
-    shoeSize: "",
-    numCargaFamiliar: "",
-    cargaFamiliarDetails: "",
-    cargoActual: "",
-    tipoTrabajador: "",
-    adscripcionNominal: "",
-    ubicacionFisica: "",
-    funcionesLaborales: "",
-    nivelAcademico: "",
-    tituloEducacionSuperior: "",
-    cargaFamiliarPatologias: "",
-    numFasdemBeneficiarios: "",
-    numHijos: "",
+    sede: '',
+    funcionarioID: '',
+    funcionarioName: '',
+    age: '',
+    gender: '',
+    funcionarioPhone: '',
+    instagram: '',
+    tiktok: '',
+    facebook: '',
+    estadoCivil: '',
+    tieneCarnet: '',
+    razonNoCarnet: '',
+    tipoPersonal: '',
+    shirtSize: '',
+    suitSize: '',
+    shoeSize: '',
+    numCargaFamiliar: '',
+    cargaFamiliarDetails: '',
+    cargoActual: '',
+    tipoTrabajador: '',
+    adscripcionNominal: '',
+    ubicacionFisica: '',
+    funcionesLaborales: '',
+    nivelAcademico: '',
+    tituloEducacionSuperior: '',
+    cargaFamiliarPatologias: '',
+    numFasdemBeneficiarios: '',
+    numHijos: '',
     cargasFamiliares: [],
     beneficiariosFasdem: [],
     hijos: [],
   });
 
   const sedesOptions = [
-    "Palacio de Justicia",
-    "Torre Mara",
-    "Edificio Arauca",
-    "Cabimas (CIVIL)",
-    "Cabimas (PENAL)",
-    "Santa Barbara (Palacio de Justicia)",
-    "Santa Barbara (Ateco)",
-    "Santa Barbara (Catatumbo)",
-    "La Villa del Rosario de Perijá (CIVIL)",
-    "La Villa del Rosario de Perijá (PENAL)",
-    "El Moján (CIVIL)",
-    "El Moján (PENAL)",
-    "La Sierrita Mara",
-    "Machiques de Perijá (CIVIL)",
-    "Valmore Rodriguez (CIVIL)",
-    "Miranda (CIVIL)",
-    "Báralt (CIVIL)",
-    "Cañada de Urdaneta (CIVIL)",
-    "Mauroa (CIVIL)",
-    "Dabajuro (CIVIL)",
+    'Palacio de Justicia',
+    'Torre Mara',
+    'Edificio Arauca',
+    'Cabimas (CIVIL)',
+    'Cabimas (PENAL)',
+    'Santa Barbara (Palacio de Justicia)',
+    'Santa Barbara (Ateco)',
+    'Santa Barbara (Catatumbo)',
+    'La Villa del Rosario de Perijá (CIVIL)',
+    'La Villa del Rosario de Perijá (PENAL)',
+    'El Moján (CIVIL)',
+    'El Moján (PENAL)',
+    'La Sierrita Mara',
+    'Machiques de Perijá (CIVIL)',
+    'Valmore Rodriguez (CIVIL)',
+    'Miranda (CIVIL)',
+    'Báralt (CIVIL)',
+    'Cañada de Urdaneta (CIVIL)',
+    'Mauroa (CIVIL)',
+    'Dabajuro (CIVIL)',
   ];
 
   const handleChange = (e) => {
@@ -75,23 +75,23 @@ function Form() {
     const { name, value } = e.target;
 
     if (
-      name.startsWith("nombreCarga") ||
-      name.startsWith("edadCarga") ||
-      name.startsWith("patologiasCarga")
+      name.startsWith('nombreCarga') ||
+      name.startsWith('edadCarga') ||
+      name.startsWith('patologiasCarga')
     ) {
       const index = parseInt(name.match(/\d+/)[0]) - 1; // Extrae el índice (1 basado)
-      const field = name.startsWith("nombreCarga")
-        ? "nombre"
-        : name.startsWith("edadCarga")
-          ? "edad"
-          : "patologias"; // Determina el campo específico
+      const field = name.startsWith('nombreCarga')
+        ? 'nombre'
+        : name.startsWith('edadCarga')
+          ? 'edad'
+          : 'patologias'; // Determina el campo específico
 
       setFormData((prev) => {
         // Copia y actualiza cargasFamiliares
         const updatedCargas = [...prev.cargasFamiliares];
 
         if (!updatedCargas[index]) {
-          updatedCargas[index] = { nombre: "", edad: "", patologias: "" };
+          updatedCargas[index] = { nombre: '', edad: '', patologias: '' };
         }
 
         updatedCargas[index][field] = value;
@@ -108,23 +108,23 @@ function Form() {
     const { name, value } = e.target;
 
     if (
-      name.startsWith("nombreBeneficiario") ||
-      name.startsWith("edadBeneficiario") ||
-      name.startsWith("patologiasBeneficiario")
+      name.startsWith('nombreBeneficiario') ||
+      name.startsWith('edadBeneficiario') ||
+      name.startsWith('patologiasBeneficiario')
     ) {
       const index = parseInt(name.match(/\d+/)[0]) - 1; // Extrae el índice (1 basado)
-      const field = name.startsWith("nombreBeneficiario")
-        ? "nombre"
-        : name.startsWith("edadBeneficiario")
-          ? "edad"
-          : "patologias"; // Determina el campo específico
+      const field = name.startsWith('nombreBeneficiario')
+        ? 'nombre'
+        : name.startsWith('edadBeneficiario')
+          ? 'edad'
+          : 'patologias'; // Determina el campo específico
 
       setFormData((prev) => {
         // Copia y actualiza cargasFamiliares
         const updatedCargas = [...prev.beneficiariosFasdem];
 
         if (!updatedCargas[index]) {
-          updatedCargas[index] = { nombre: "", edad: "", patologias: "" };
+          updatedCargas[index] = { nombre: '', edad: '', patologias: '' };
         }
 
         updatedCargas[index][field] = value;
@@ -141,23 +141,23 @@ function Form() {
     const { name, value } = e.target;
 
     if (
-      name.startsWith("nombreHijo") ||
-      name.startsWith("edadHijo") ||
-      name.startsWith("patologiasHijo")
+      name.startsWith('nombreHijo') ||
+      name.startsWith('edadHijo') ||
+      name.startsWith('patologiasHijo')
     ) {
       const index = parseInt(name.match(/\d+/)[0]) - 1; // Extrae el índice (1 basado)
-      const field = name.startsWith("nombreHijo")
-        ? "nombre"
-        : name.startsWith("edadHijo")
-          ? "edad"
-          : "patologias"; // Determina el campo específico
+      const field = name.startsWith('nombreHijo')
+        ? 'nombre'
+        : name.startsWith('edadHijo')
+          ? 'edad'
+          : 'patologias'; // Determina el campo específico
 
       setFormData((prev) => {
         // Copia y actualiza cargasFamiliares
         const updatedCargas = [...prev.hijos];
 
         if (!updatedCargas[index]) {
-          updatedCargas[index] = { nombre: "", edad: "", patologias: "" };
+          updatedCargas[index] = { nombre: '', edad: '', patologias: '' };
         }
 
         updatedCargas[index][field] = value;
@@ -186,34 +186,6 @@ function Form() {
     }));
   };
 
-  const handleDownload = async () => {
-    try {
-      const response = await fetch("https://backend-encuesta-flask.onrender.com/api/export_employees", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Error al descargar el archivo");
-      }
-
-      // Obtener el blob del archivo
-      const blob = await response.blob();
-
-      // Crear una URL para el blob y simular la descarga
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "puesto_a_puesto.xlsx"; // Nombre del archivo a descargar
-      a.click();
-      window.URL.revokeObjectURL(url); // Limpiar la URL
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -221,18 +193,21 @@ function Form() {
 
     // Agregar todos los campos del formulario excepto el archivo
     for (const key in formData) {
-      if (
-        key !== "fotoFuncionario"
-      ) {
-
-        if (key === "hijos") {
-          dataToSubmit.append("hijos", JSON.stringify(formData.hijos))
+      if (key !== 'fotoFuncionario') {
+        if (key === 'hijos') {
+          dataToSubmit.append('hijos', JSON.stringify(formData.hijos));
         }
-        if (key === "cargasFamiliares") {
-          dataToSubmit.append("cargasFamiliares", JSON.stringify(formData.cargasFamiliares))
+        if (key === 'cargasFamiliares') {
+          dataToSubmit.append(
+            'cargasFamiliares',
+            JSON.stringify(formData.cargasFamiliares)
+          );
         }
-        if (key === "beneficiariosFasdem") {
-          dataToSubmit.append("beneficiariosFasdem", JSON.stringify(formData.beneficiariosFasdem))
+        if (key === 'beneficiariosFasdem') {
+          dataToSubmit.append(
+            'beneficiariosFasdem',
+            JSON.stringify(formData.beneficiariosFasdem)
+          );
         }
 
         dataToSubmit.append(key, formData[key]);
@@ -241,78 +216,81 @@ function Form() {
 
     // Agregar el archivo al FormData
     if (formData.fotoFuncionario) {
-      dataToSubmit.append("fotoFuncionario", formData.fotoFuncionario);
+      dataToSubmit.append('fotoFuncionario', formData.fotoFuncionario);
     }
 
     // Agregar los datos del responsable
     for (const key in responsableData) {
       dataToSubmit.append(key, responsableData[key]);
     }
-    console.log(dataToSubmit)
+    console.log(dataToSubmit);
 
     try {
-      const response = await fetch("https://backend-encuesta-flask.onrender.com/api/submit", {
-        method: "POST",
-        headers: {
-          "Access-Control-Allow-Origin":  "*"
-        },
-        body: dataToSubmit,
-      });
+      const response = await fetch(
+        'https://backend-encuesta-flask.onrender.com/api/submit',
+        {
+          method: 'POST',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+          body: dataToSubmit,
+        }
+      );
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || "Error en la solicitud");
+        throw new Error(errorData.error || 'Error en la solicitud');
       }
 
       const responseData = await response.json();
       console.log(responseData);
 
-      alert(responseData.message || "Datos enviados correctamente");
+      alert(responseData.message || 'Datos enviados correctamente');
 
       // Restablece el formulario
       setFormData({
-        funcionarioID: "",
-        funcionarioName: "",
-        age: "",
-        gender: "",
-        funcionarioPhone: "",
-        instagram: "",
-        tiktok: "",
-        facebook: "",
-        estadoCivil: "",
-        tieneCarnet: "",
-        razonNoCarnet: "",
-        shirtSize: "",
-        suitSize: "",
-        shoeSize: "",
-        numCargaFamiliar: "",
-        tipoPersonal: "",
-        cargaFamiliarDetails: "",
-        cargaFamiliarPatologias: "",
-        numFasdemBeneficiarios: "",
-        cargoActual: "",
-        tipoTrabajador: "",
-        adscripcionNominal: "",
-        ubicacionFisica: "",
-        funcionesLaborales: "",
-        nivelAcademico: "",
-        tituloEducacionSuperior: "",
-        numHijos: "",
+        funcionarioID: '',
+        funcionarioName: '',
+        age: '',
+        gender: '',
+        funcionarioPhone: '',
+        instagram: '',
+        tiktok: '',
+        facebook: '',
+        estadoCivil: '',
+        tieneCarnet: '',
+        razonNoCarnet: '',
+        shirtSize: '',
+        suitSize: '',
+        shoeSize: '',
+        numCargaFamiliar: '',
+        tipoPersonal: '',
+        cargaFamiliarDetails: '',
+        cargaFamiliarPatologias: '',
+        numFasdemBeneficiarios: '',
+        cargoActual: '',
+        tipoTrabajador: '',
+        adscripcionNominal: '',
+        ubicacionFisica: '',
+        funcionesLaborales: '',
+        nivelAcademico: '',
+        tituloEducacionSuperior: '',
+        numHijos: '',
         cargasFamiliares: [],
         beneficiariosFasdem: [],
         hijos: [],
-        sede:"",
+        sede: '',
         fotoFuncionario: null,
       });
 
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
-      console.error("Error en la solicitud:", error);
-      alert(error.message || "Error al enviar los datos");
+      console.error('Error en la solicitud:', error);
+      alert(error.message || 'Error al enviar los datos');
     }
   };
 
   return (
-    <div className="max-w-lg mx-auto bg-white p-8 rounded-md shadow-md">
+    <div className="w-full mx-auto bg-white p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-semibold mb-4">
         Formulario de Puesto a Puesto
       </h2>
@@ -328,11 +306,11 @@ function Form() {
           value={responsableData.responsableName}
           onChange={(e) => {
             handleResponsableChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con el nombre del responsable.",
+              'Por favor, complete este campo con el nombre del responsable.'
             )
           }
           required
@@ -345,11 +323,11 @@ function Form() {
           value={responsableData.responsablePhone}
           onChange={(e) => {
             handleResponsableChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con el número telefónico del responsable.",
+              'Por favor, complete este campo con el número telefónico del responsable.'
             )
           }
           required
@@ -362,11 +340,11 @@ function Form() {
           value={formData.sede}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la sede donde está siendo realizada la encuesta.",
+              'Por favor, complete este campo con la sede donde está siendo realizada la encuesta.'
             )
           }
           required
@@ -389,11 +367,11 @@ function Form() {
           value={formData.funcionarioID}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la Cedula de Identidad del Funcionario",
+              'Por favor, complete este campo con la Cedula de Identidad del Funcionario'
             )
           }
           required
@@ -406,11 +384,11 @@ function Form() {
           value={formData.funcionarioName}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con los nombres y apellidos del Funcionario",
+              'Por favor, complete este campo con los nombres y apellidos del Funcionario'
             )
           }
           required
@@ -423,11 +401,11 @@ function Form() {
           value={formData.age}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la edad del Funcionario",
+              'Por favor, complete este campo con la edad del Funcionario'
             )
           }
           required
@@ -438,11 +416,11 @@ function Form() {
           value={formData.gender}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con el sexo del Funcionario",
+              'Por favor, complete este campo con el sexo del Funcionario'
             )
           }
           required
@@ -460,11 +438,11 @@ function Form() {
           required
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con el número telefónico del Funcionario",
+              'Por favor, complete este campo con el número telefónico del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -474,7 +452,6 @@ function Form() {
           name="instagram"
           placeholder="Instagram"
           value={formData.instagram}
-          
           onChange={handleChange}
           className="mb-4 p-2 border rounded w-full"
         />
@@ -483,7 +460,6 @@ function Form() {
           name="tiktok"
           placeholder="TikTok"
           value={formData.tiktok}
-          
           onChange={handleChange}
           className="mb-4 p-2 border rounded w-full"
         />
@@ -492,7 +468,6 @@ function Form() {
           name="facebook"
           placeholder="Facebook"
           value={formData.facebook}
-          
           onChange={handleChange}
           className="mb-4 p-2 border rounded w-full"
         />
@@ -502,11 +477,11 @@ function Form() {
           value={formData.estadoCivil}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con el estado civil del Funcionario",
+              'Por favor, complete este campo con el estado civil del Funcionario'
             )
           }
           required
@@ -530,11 +505,11 @@ function Form() {
           value={formData.tieneCarnet}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo el estado de carnetización del Funcionario",
+              'Por favor, complete este campo el estado de carnetización del Funcionario'
             )
           }
           required
@@ -546,7 +521,7 @@ function Form() {
         </select>
 
         {/* Campo de explicación si no tiene carnet */}
-        {formData.tieneCarnet === "No" && (
+        {formData.tieneCarnet === 'No' && (
           <>
             <input
               type="text"
@@ -555,11 +530,11 @@ function Form() {
               value={formData.razonNoCarnet}
               onChange={(e) => {
                 handleChange(e);
-                e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+                e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
               }}
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "Por favor, complete este campo con la razón por la cual el funcionario no tiene carnet",
+                  'Por favor, complete este campo con la razón por la cual el funcionario no tiene carnet'
                 )
               }
               required
@@ -575,11 +550,11 @@ function Form() {
               name="fotoFuncionario"
               onChange={(e) => {
                 handleFileChange(e);
-                e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+                e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
               }}
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  "Por favor, complete este campo con la foto del funcionario que seria usada para el carnet",
+                  'Por favor, complete este campo con la foto del funcionario que seria usada para el carnet'
                 )
               }
               required
@@ -596,11 +571,11 @@ function Form() {
           required
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con el cargo del Funcionario",
+              'Por favor, complete este campo con el cargo del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -611,11 +586,11 @@ function Form() {
           value={formData.tipoPersonal}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con el tipo de personal del Funcionario",
+              'Por favor, complete este campo con el tipo de personal del Funcionario'
             )
           }
           required
@@ -631,11 +606,11 @@ function Form() {
           value={formData.tipoTrabajador}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo tipo de trabajador del Funcionario",
+              'Por favor, complete este campo tipo de trabajador del Funcionario'
             )
           }
           required
@@ -653,11 +628,11 @@ function Form() {
           required
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la adscripción nominal del Funcionario",
+              'Por favor, complete este campo con la adscripción nominal del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -670,11 +645,11 @@ function Form() {
           required
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la ubicación física del Funcionario",
+              'Por favor, complete este campo con la ubicación física del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -687,11 +662,11 @@ function Form() {
           required
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con las funciones laborales del Funcionario",
+              'Por favor, complete este campo con las funciones laborales del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -703,11 +678,11 @@ function Form() {
           value={formData.nivelAcademico}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con el nivel academico del Funcionario",
+              'Por favor, complete este campo con el nivel academico del Funcionario'
             )
           }
           required
@@ -721,11 +696,11 @@ function Form() {
           <option value="Magister">Magister</option>
           <option value="Doctorado">Doctorado</option>
         </select>
-        {(formData.nivelAcademico == "TSU" ||
-          formData.nivelAcademico == "Licenciado" ||
-          formData.nivelAcademico == "Ingeniero" ||
-          formData.nivelAcademico == "Magister" ||
-          formData.nivelAcademico == "Doctorado") && (
+        {(formData.nivelAcademico == 'TSU' ||
+          formData.nivelAcademico == 'Licenciado' ||
+          formData.nivelAcademico == 'Ingeniero' ||
+          formData.nivelAcademico == 'Magister' ||
+          formData.nivelAcademico == 'Doctorado') && (
           <input
             type="text"
             name="tituloEducacionSuperior"
@@ -734,11 +709,11 @@ function Form() {
             required
             onChange={(e) => {
               handleChange(e);
-              e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+              e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
             }}
             onInvalid={(e) =>
               e.target.setCustomValidity(
-                "Por favor, complete este campo con el titulo de educación superior obtenido por el Funcionario",
+                'Por favor, complete este campo con el titulo de educación superior obtenido por el Funcionario'
               )
             }
             className="mb-4 p-2 border rounded w-full"
@@ -754,11 +729,11 @@ function Form() {
           required
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la talla de camisa del Funcionario",
+              'Por favor, complete este campo con la talla de camisa del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -771,11 +746,11 @@ function Form() {
           required
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la talla de traje del Funcionario",
+              'Por favor, complete este campo con la talla de traje del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -788,11 +763,11 @@ function Form() {
           required
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la talla de zapatos del Funcionario",
+              'Por favor, complete este campo con la talla de zapatos del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -807,11 +782,11 @@ function Form() {
           value={formData.numCargaFamiliar}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la cantidad de personas en la carga familiar del Funcionario",
+              'Por favor, complete este campo con la cantidad de personas en la carga familiar del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -830,7 +805,7 @@ function Form() {
                   placeholder="Nombre"
                   required
                   value={
-                    formData.cargasFamiliares[index]?.nombre || "" // Mapea el valor del array
+                    formData.cargasFamiliares[index]?.nombre || '' // Mapea el valor del array
                   }
                   onChange={handleCargaFamiliarChange}
                   className="mb-4 p-2 border rounded w-full"
@@ -841,7 +816,7 @@ function Form() {
                   placeholder="Edad"
                   required
                   value={
-                    formData.cargasFamiliares[index]?.edad || "" // Mapea el valor del array
+                    formData.cargasFamiliares[index]?.edad || '' // Mapea el valor del array
                   }
                   onChange={handleCargaFamiliarChange}
                   className="mb-4 p-2 border rounded w-full"
@@ -852,7 +827,7 @@ function Form() {
                   placeholder="Patologías"
                   required
                   value={
-                    formData.cargasFamiliares[index]?.patologias || "" // Mapea el valor del array
+                    formData.cargasFamiliares[index]?.patologias || '' // Mapea el valor del array
                   }
                   onChange={handleCargaFamiliarChange}
                   className="mb-4 p-2 border rounded w-full"
@@ -871,11 +846,11 @@ function Form() {
           value={formData.numFasdemBeneficiarios}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la cantidad de beneficiarios de FASDEM del Funcionario",
+              'Por favor, complete este campo con la cantidad de beneficiarios de FASDEM del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -895,7 +870,7 @@ function Form() {
                     placeholder="Nombre"
                     required
                     value={
-                      formData.beneficiariosFasdem[index]?.nombre || "" // Mapea el valor del array
+                      formData.beneficiariosFasdem[index]?.nombre || '' // Mapea el valor del array
                     }
                     onChange={handleBeneficiariosFasdemChange}
                     className="mb-4 p-2 border rounded w-full"
@@ -906,7 +881,7 @@ function Form() {
                     placeholder="Edad"
                     required
                     value={
-                      formData.beneficiariosFasdem[index]?.edad || "" // Mapea el valor del array
+                      formData.beneficiariosFasdem[index]?.edad || '' // Mapea el valor del array
                     }
                     onChange={handleBeneficiariosFasdemChange}
                     className="mb-4 p-2 border rounded w-full"
@@ -917,13 +892,13 @@ function Form() {
                     placeholder="Patologías"
                     required
                     value={
-                      formData.beneficiariosFasdem[index]?.patologias || "" // Mapea el valor del array
+                      formData.beneficiariosFasdem[index]?.patologias || '' // Mapea el valor del array
                     }
                     onChange={handleBeneficiariosFasdemChange}
                     className="mb-4 p-2 border rounded w-full"
                   />
                 </div>
-              ),
+              )
             )}
           </>
         )}
@@ -935,11 +910,11 @@ function Form() {
           value={formData.numHijos}
           onChange={(e) => {
             handleChange(e);
-            e.target.setCustomValidity(""); // Limpia el mensaje de error si el campo se llena
+            e.target.setCustomValidity(''); // Limpia el mensaje de error si el campo se llena
           }}
           onInvalid={(e) =>
             e.target.setCustomValidity(
-              "Por favor, complete este campo con la cantidad de hijos del Funcionario",
+              'Por favor, complete este campo con la cantidad de hijos del Funcionario'
             )
           }
           className="mb-4 p-2 border rounded w-full"
@@ -957,7 +932,7 @@ function Form() {
                   placeholder="Nombre"
                   required
                   value={
-                    formData.hijos[index]?.nombre || "" // Mapea el valor del array
+                    formData.hijos[index]?.nombre || '' // Mapea el valor del array
                   }
                   onChange={handleHijosChange}
                   className="mb-4 p-2 border rounded w-full"
@@ -968,7 +943,7 @@ function Form() {
                   placeholder="Edad"
                   required
                   value={
-                    formData.hijos[index]?.edad || "" // Mapea el valor del array
+                    formData.hijos[index]?.edad || '' // Mapea el valor del array
                   }
                   onChange={handleHijosChange}
                   className="mb-4 p-2 border rounded w-full"
@@ -979,7 +954,7 @@ function Form() {
                   placeholder="Patologías"
                   required
                   value={
-                    formData.hijos[index]?.patologias || "" // Mapea el valor del array
+                    formData.hijos[index]?.patologias || '' // Mapea el valor del array
                   }
                   onChange={handleHijosChange}
                   className="mb-4 p-2 border rounded w-full"
@@ -988,22 +963,14 @@ function Form() {
             ))}
           </>
         )}
-        
+
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 px-4 my-4 rounded-md hover:bg-blue-600 transition"
         >
           Enviar
         </button>
-        
       </form>
-      <button
-          onClick={handleDownload}
-          className="w-full bg-gray-500 text-white py-2 px-4 rounded-md cursor-not-allowed"
-          disabled
-        >
-          Exportar Excel con Resultados
-        </button>
     </div>
   );
 }
