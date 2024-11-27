@@ -8,11 +8,7 @@ function PuestoAPuestoLayout() {
           <div className="flex h-16 items-center justify-center">
             <div className="flex items-center">
               <div className="shrink-0">
-                <img
-                  className="size-8"
-                  src="/src/assets/darzulia.png"
-                  alt="Your Company"
-                />
+                <img className="size-12" src="/darzulia.png" alt="DAR logo" />
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
