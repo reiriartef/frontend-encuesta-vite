@@ -55,6 +55,11 @@ function PuestoAPuestoLayout() {
         <div className="min-w-full mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <Outlet />
         </div>
+        <footer className="bg-gray-800 text-white text-center py-4 sticky bottom-0">
+          {' '}
+          © {new Date().getFullYear()} Oficina de Apoyo Técnico Informático.
+          Palacio de Justicia de Maracaibo. Todos los derechos reservados.
+        </footer>
       </main>
     </div>
   );
