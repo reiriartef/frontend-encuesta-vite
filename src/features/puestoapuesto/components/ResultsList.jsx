@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Modal from './Modal';
 
 function ResultsList() {
   const [sedes, setSedes] = useState([]);
@@ -7,6 +8,8 @@ function ResultsList() {
   const [cedula, setCedula] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [filteredFuncionarios, setFilteredFuncionarios] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFuncionario, setSelectedFuncionario] = useState(null);
 
   useEffect(() => {
     handleSedes();
@@ -100,6 +103,15 @@ function ResultsList() {
   const handleNameChange = (e) => {
     const { value } = e.target;
     setCedula(value);
+  };
+
+  const openModal = (funcionario) => {
+    setSelectedFuncionario(funcionario);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedFuncionario(null);
   };
 
   return (
@@ -199,9 +211,8 @@ function ResultsList() {
                   </td>
                   <td className="py-2 px-4 text-left">
                     <button
-                      onClick={handleDownload}
-                      className="w-full bg-gray-500 text-white py-2 px-4 rounded-md"
-                      disabled
+                      onClick={() => openModal(funcionario)}
+                      className="w-full bg-blue-500 text-white py-2 px-4 rounded-md"
                     >
                       Ver Funcionario
                     </button>
@@ -218,6 +229,11 @@ function ResultsList() {
           </tbody>
         </table>
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        funcionario={selectedFuncionario}
+      />
     </div>
   );
 }

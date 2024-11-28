@@ -22,7 +22,7 @@ ReactDOM.createRoot(root).render(
       <Route path="/puestoapuesto" element={<PuestoAPuestoLayout />}>
         <Route index path="registro" element={<Form />} />
         <Route element={<ProtectedRoute requiredPassword={requiredPassword} />}>
-          <Route path="resultados" element={<ResultsList />} />
+          <Route path="resultados" element={<ResultsList />}></Route>
         </Route>
       </Route>
     </Routes>
