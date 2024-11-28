@@ -162,7 +162,7 @@ function ResultsList() {
         <input
           type="text"
           name="nombre"
-          placeholder="Filtrar por cedula"
+          placeholder="Filtrar por cédula"
           value={cedula}
           onChange={handleNameChange}
           className="mb-4 p-2 border rounded w-full"
@@ -170,9 +170,9 @@ function ResultsList() {
       </div>
       <div className="min-w-full mx-auto overflow-x-auto">
         <table className="min-w-full bg-white shadow rounded-lg">
-          <thead className="min-w-full bg-gray-100">
+          <thead className="bg-gray-100 hidden lg:table-header-group">
             <tr>
-              <th className="py-2 px-4 text-left">Cedula</th>
+              <th className="py-2 px-4 text-left">Cédula</th>
               <th className="py-2 px-4 text-left">Nombres y Apellidos</th>
               <th className="py-2 px-4 text-left">Cargo</th>
               <th className="py-2 px-4 text-left">Tipo de Trabajador</th>
@@ -186,30 +186,53 @@ function ResultsList() {
           <tbody>
             {filteredFuncionarios.length > 0 ? (
               filteredFuncionarios.map((funcionario, index) => (
-                <tr key={index} className="border-b hover:bg-gray-50">
-                  <td className="py-2 px-4 text-left">
+                <tr
+                  key={index}
+                  className="border-b hover:bg-gray-50 block lg:table-row"
+                >
+                  <td className="py-2 px-4 text-left block lg:table-cell">
+                    <span className="lg:hidden font-semibold">Cédula: </span>
                     {funcionario.funcionario_id}
                   </td>
-                  <td className="py-2 px-4 text-left">
+                  <td className="py-2 px-4 text-left block lg:table-cell">
+                    <span className="lg:hidden font-semibold">
+                      Nombres y Apellidos:{' '}
+                    </span>
                     {funcionario.nombre_funcionario}
                   </td>
-                  <td className="py-2 px-4 text-left">{funcionario.cargo}</td>
-                  <td className="py-2 px-4 text-left">
+                  <td className="py-2 px-4 text-left block lg:table-cell">
+                    <span className="lg:hidden font-semibold">Cargo: </span>
+                    {funcionario.cargo}
+                  </td>
+                  <td className="py-2 px-4 text-left block lg:table-cell">
+                    <span className="lg:hidden font-semibold">
+                      Tipo de Trabajador:{' '}
+                    </span>
                     {funcionario.tipo_trabajador}
                   </td>
-                  <td className="py-2 px-4 text-left">
+                  <td className="py-2 px-4 text-left block lg:table-cell">
+                    <span className="lg:hidden font-semibold">
+                      Tipo de Personal:{' '}
+                    </span>
                     {funcionario.tipo_personal}
                   </td>
-                  <td className="py-2 px-4 text-left">
+                  <td className="py-2 px-4 text-left block lg:table-cell">
+                    <span className="lg:hidden font-semibold">
+                      Adscripción Nominal:{' '}
+                    </span>
                     {funcionario.adscripcion_nominal}
                   </td>
-                  <td className="py-2 px-4 text-left">
+                  <td className="py-2 px-4 text-left block lg:table-cell">
+                    <span className="lg:hidden font-semibold">
+                      Ubicación Física:{' '}
+                    </span>
                     {funcionario.ubicacion_fisica}
                   </td>
-                  <td className="py-2 px-4 text-left">
+                  <td className="py-2 px-4 text-left block lg:table-cell">
+                    <span className="lg:hidden font-semibold">Funciones: </span>
                     {funcionario.funciones}
                   </td>
-                  <td className="py-2 px-4 text-left">
+                  <td className="py-2 px-4 text-left block lg:table-cell">
                     <button
                       onClick={() => openModal(funcionario)}
                       className="w-full bg-blue-500 text-white py-2 px-4 rounded-md"
