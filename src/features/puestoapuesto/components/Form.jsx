@@ -79,21 +79,29 @@ function Form() {
     if (
       name.startsWith('nombreCarga') ||
       name.startsWith('edadCarga') ||
-      name.startsWith('patologiasCarga')
+      name.startsWith('patologiasCarga') ||
+      name.startsWith('sexoCarga')
     ) {
       const index = parseInt(name.match(/\d+/)[0]) - 1; // Extrae el índice (1 basado)
       const field = name.startsWith('nombreCarga')
         ? 'nombre'
         : name.startsWith('edadCarga')
           ? 'edad'
-          : 'patologias'; // Determina el campo específico
+          : name.startsWith('patologiasCarga')
+            ? 'patologias'
+            : 'sexo'; // Determina el campo específico
 
       setFormData((prev) => {
         // Copia y actualiza cargasFamiliares
         const updatedCargas = [...prev.cargasFamiliares];
 
         if (!updatedCargas[index]) {
-          updatedCargas[index] = { nombre: '', edad: '', patologias: '' };
+          updatedCargas[index] = {
+            nombre: '',
+            edad: '',
+            patologias: '',
+            sexo: '',
+          };
         }
 
         updatedCargas[index][field] = value;
@@ -112,21 +120,29 @@ function Form() {
     if (
       name.startsWith('nombreBeneficiario') ||
       name.startsWith('edadBeneficiario') ||
-      name.startsWith('patologiasBeneficiario')
+      name.startsWith('patologiasBeneficiario') ||
+      name.startsWith('sexoBeneficiario')
     ) {
       const index = parseInt(name.match(/\d+/)[0]) - 1; // Extrae el índice (1 basado)
       const field = name.startsWith('nombreBeneficiario')
         ? 'nombre'
         : name.startsWith('edadBeneficiario')
           ? 'edad'
-          : 'patologias'; // Determina el campo específico
+          : name.startsWith('patologiasBeneficiario')
+            ? 'patologias'
+            : 'sexo'; // Determina el campo específico
 
       setFormData((prev) => {
         // Copia y actualiza cargasFamiliares
         const updatedCargas = [...prev.beneficiariosFasdem];
 
         if (!updatedCargas[index]) {
-          updatedCargas[index] = { nombre: '', edad: '', patologias: '' };
+          updatedCargas[index] = {
+            nombre: '',
+            edad: '',
+            patologias: '',
+            sexo: '',
+          };
         }
 
         updatedCargas[index][field] = value;
@@ -145,21 +161,29 @@ function Form() {
     if (
       name.startsWith('nombreHijo') ||
       name.startsWith('edadHijo') ||
-      name.startsWith('patologiasHijo')
+      name.startsWith('patologiasHijo') ||
+      name.startsWith('sexoHijo')
     ) {
       const index = parseInt(name.match(/\d+/)[0]) - 1; // Extrae el índice (1 basado)
       const field = name.startsWith('nombreHijo')
         ? 'nombre'
         : name.startsWith('edadHijo')
           ? 'edad'
-          : 'patologias'; // Determina el campo específico
+          : name.startsWith('patologiasHijo')
+            ? 'patologias'
+            : 'sexo'; // Determina el campo específico
 
       setFormData((prev) => {
         // Copia y actualiza cargasFamiliares
         const updatedCargas = [...prev.hijos];
 
         if (!updatedCargas[index]) {
-          updatedCargas[index] = { nombre: '', edad: '', patologias: '' };
+          updatedCargas[index] = {
+            nombre: '',
+            edad: '',
+            patologias: '',
+            sexo: '',
+          };
         }
 
         updatedCargas[index][field] = value;
@@ -941,6 +965,19 @@ function Form() {
                   onChange={handleHijosChange}
                   className="mb-4 p-2 border rounded w-full"
                 />
+                <select
+                  name={`sexoHijo${index + 1}`}
+                  value={
+                    formData.hijos[index]?.sexo || '' // Mapea el valor del array
+                  }
+                  onChange={handleHijosChange}
+                  required
+                  className="mb-4 p-2 border rounded w-full"
+                >
+                  <option value="">Sexo</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                </select>
                 <input
                   type="number"
                   name={`edadHijo${index + 1}`}
