@@ -1,11 +1,59 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const Modal = ({ isOpen, onClose, funcionario }) => {
+  const [hijos, setHijos] = useState([]);
+  const [cargas, setCargas] = useState([]);
+  const [beneficiarios, setBeneficiarios] = useState([]);
+
+  const handleHijos = useCallback(async () => {
+    try {
+      const hijos = await fetch(
+        `https://backend-encuesta-flask.onrender.com/api/hijos?funcionario=${funcionario.funcionario_id}`
+      ).then((response) => response.json());
+      setHijos(hijos);
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  }, [funcionario]);
+  const handleCargas = useCallback(async () => {
+    try {
+      const cargas = await fetch(
+        `https://backend-encuesta-flask.onrender.com/api/cargas?funcionario=${funcionario.funcionario_id}`
+      ).then((response) => response.json());
+      setCargas(cargas);
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  }, [funcionario]);
+
+  const handleBeneficiarios = useCallback(async () => {
+    try {
+      const beneficiarios = await fetch(
+        `https://backend-encuesta-flask.onrender.com/api/beneficiarios?funcionario=${funcionario.funcionario_id}`
+      ).then((response) => response.json());
+      setBeneficiarios(beneficiarios);
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  }, [funcionario]);
+
+  useEffect(() => {
+    if (funcionario) {
+      handleBeneficiarios();
+      handleCargas();
+      handleHijos();
+    }
+  }, [funcionario, handleHijos, handleBeneficiarios, handleCargas]);
+
   if (!isOpen) return null;
+  if (!funcionario) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
       <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-h-[80vh] overflow-y-auto">
         <div className="px-4 sm:px-0">
           <h3 className="text-lg font-semibold text-gray-900">
@@ -142,6 +190,32 @@ const Modal = ({ isOpen, onClose, funcionario }) => {
               <dd className="mt-1 text-sm text-gray-700">
                 {funcionario.num_carga_familiar}
               </dd>
+              <div>
+                {' '}
+                <h4 className="text-lg font-semibold text-gray-900 mt-6 mb-2">
+                  Cargas Familiares
+                </h4>{' '}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {' '}
+                  {cargas.map((carga, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-4 rounded-lg shadow-md space-y-2"
+                    >
+                      {' '}
+                      <p className="text-sm font-medium text-gray-900">
+                        Nombre: {carga.nombre}
+                      </p>{' '}
+                      <p className="text-sm font-medium text-gray-700">
+                        Edad: {carga.edad}
+                      </p>{' '}
+                      <p className="text-sm text-gray-700">
+                        Patologías: {carga.patologias}
+                      </p>{' '}
+                    </div>
+                  ))}{' '}
+                </div>{' '}
+              </div>
             </div>
             <div className="px-4 py-6">
               <dt className="text-sm font-medium text-gray-900">
@@ -150,6 +224,32 @@ const Modal = ({ isOpen, onClose, funcionario }) => {
               <dd className="mt-1 text-sm text-gray-700">
                 {funcionario.num_fasdem_beneficiarios}
               </dd>
+              <div>
+                {' '}
+                <h4 className="text-lg font-semibold text-gray-900 mt-6 mb-2">
+                  Beneficiarios de Fasdem
+                </h4>{' '}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {' '}
+                  {beneficiarios.map((beneficiario, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-4 rounded-lg shadow-md space-y-2"
+                    >
+                      {' '}
+                      <p className="text-sm font-medium text-gray-900">
+                        Nombre: {beneficiario.nombre}
+                      </p>{' '}
+                      <p className="text-sm text-gray-700">
+                        Edad: {beneficiario.edad}
+                      </p>{' '}
+                      <p className="text-sm text-gray-700">
+                        Patologías: {beneficiario.patologias}
+                      </p>{' '}
+                    </div>
+                  ))}{' '}
+                </div>{' '}
+              </div>
             </div>
             <div className="px-4 py-6">
               <dt className="text-sm font-medium text-gray-900">
@@ -158,6 +258,33 @@ const Modal = ({ isOpen, onClose, funcionario }) => {
               <dd className="mt-1 text-sm text-gray-700">
                 {funcionario.num_hijos}
               </dd>
+              <div>
+                {' '}
+                <h4 className="text-lg font-semibold text-gray-900 mt-6 mb-2">
+                  Hijos
+                </h4>{' '}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {' '}
+                  {hijos.map((hijo, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-4 rounded-lg shadow-md space-y-2"
+                    >
+                      {' '}
+                      <p className="text-sm font-medium text-gray-900">
+                        Nombre: {hijo.nombre}
+                      </p>{' '}
+                      <p className="text-sm text-gray-700">Edad: {hijo.edad}</p>{' '}
+                      <p className="text-sm text-gray-700">
+                        Género: {hijo.sexo}
+                      </p>{' '}
+                      <p className="text-sm text-gray-700">
+                        Patologías: {hijo.patologias}
+                      </p>{' '}
+                    </div>
+                  ))}{' '}
+                </div>{' '}
+              </div>
             </div>
             <div className="px-4 py-6">
               <dt className="text-sm font-medium text-gray-900">
