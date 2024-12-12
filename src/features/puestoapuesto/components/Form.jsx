@@ -476,7 +476,7 @@ function Form() {
           className="mb-4 p-2 border rounded w-full"
         />
         <input
-          type="tel"
+          type="text"
           name="instagram"
           placeholder="Instagram"
           value={formData.instagram}
@@ -484,7 +484,7 @@ function Form() {
           className="mb-4 p-2 border rounded w-full"
         />
         <input
-          type="tel"
+          type="text"
           name="tiktok"
           placeholder="TikTok"
           value={formData.tiktok}
@@ -492,7 +492,7 @@ function Form() {
           className="mb-4 p-2 border rounded w-full"
         />
         <input
-          type="tel"
+          type="text"
           name="facebook"
           placeholder="Facebook"
           value={formData.facebook}
